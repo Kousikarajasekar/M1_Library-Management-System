@@ -2,22 +2,20 @@
 #include<stdlib.h> 
 #include<string.h>
 #include<time.h>
-
+// structure for book details
 struct books{
     int id;
     char bookName[50];
     char authorName[50];
     char date[12];
 }b;
-
-struct student{
+// structure for member details
+struct member{
     int id;
-    char sName[50];
-    char sClass[50];
-    int sRoll;
+    char mName[50]; 
     char bookName[50];
     char date[12];
-}s;
+}m;
 
 FILE *fp;
 
@@ -36,11 +34,10 @@ int main(){
         printf("0.Exit\n\n");
         printf("Enter your choice: ");
         scanf("%d", &ch);
-
+// choices to  add, issue books
         switch(ch){
-        case 0:
-            exit(0);
-
+        case 0: 
+              exit(0);
         case 1:
             addBook();
             break;
@@ -155,7 +152,7 @@ void issueBook(){
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
     sprintf(myDate, "%02d/%02d/%d", tm.tm_mday, tm.tm_mon+1, tm.tm_year + 1900);
-    strcpy(s.date, myDate);
+    strcpy(m.date, myDate);
 
     int f=0;
 
@@ -163,14 +160,14 @@ void issueBook(){
     printf("<== Issue Books ==>\n\n");
 
     printf("Enter Book id to issue: ");
-    scanf("%d", &s.id);
+    scanf("%d", &m.id);
 
-    //Check if we have book of given id
+    //to  Check if we have book of given id
     fp = fopen("books.txt", "rb");
 
     while(fread(&b, sizeof(b), 1, fp) == 1){
-        if(b.id == s.id){
-            strcpy(s.bookName, b.bookName);
+        if(b.id == m.id){
+            strcpy(m.bookName, b.bookName);
             f=1;
             break;
         }
@@ -184,20 +181,14 @@ void issueBook(){
 
     fp = fopen("issue.txt", "ab");
 
-    printf("Enter Student Name: ");
+    printf("Enter member Name: ");
     fflush(stdin);
-    gets(s.sName);
-
-    printf("Enter Student Class: ");
-    fflush(stdin);
-    gets(s.sClass);
-
-    printf("Enter Student Roll: ");
-    scanf("%d", &s.sRoll);
+    gets(m.mName);
 
     printf("Book Issued Successfully\n\n");
 
-    fwrite(&s, sizeof(s), 1, fp);
+    fwrite(&m, sizeof(m),1,fp);
+
     fclose(fp);
 }
 
@@ -205,11 +196,11 @@ void issueList(){
     system("cls");
     printf("<== Book Issue List ==>\n\n");
 
-    printf("%-10s %-30s %-20s %-10s %-30s %s\n\n", "S.id", "Name", "Class", "Roll", "Book Name", "Date");
+    printf("%-10s %-30s %-20s %-10s %-30s %s\n\n", "M.id", "Name",  "Book Name", "Date");
 
     fp = fopen("issue.txt", "rb");
-    while(fread(&s, sizeof(s), 1, fp) == 1){
-        printf("%-10d %-30s %-20s %-10d %-30s %s\n", s.id, s.sName, s.sClass, s.sRoll, s.bookName, s.date);
+    while(fread(&m, sizeof(m), 1, fp) == 1){
+        printf("%-10d %-30s %-20s %-10d %-30s %s\n", m.id, m.mName,  m.bookName, m.date);
     }
 
     fclose(fp);
