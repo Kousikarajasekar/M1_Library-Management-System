@@ -21,19 +21,19 @@
  * @brief Shows the record of library management system
  * @return Text file generated with adding or issuing books
  */
-void add_Book();
+void addBook();
 
 /**
  * @brief Doing file operations for txt file
  * @return add books with date and time recorded
  */
-void issue_Book();
+void issueBook();
 
 /**
  * @brief Doing file operations for txt file
  * @return issue book required by the user
  */
-void issue_List();
+void issueList();
 
 /**
  * @brief Doing file operations for txt file
