@@ -2,7 +2,7 @@
 
 void addBook(int id, int m.Name)
 {
-    return issueBook with time;
+    return issueBook;
 }
 
 void issueBook(int id, int m.Name )
