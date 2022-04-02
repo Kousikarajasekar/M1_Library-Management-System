@@ -12,7 +12,7 @@ struct books{
     char authorName[50];
     char date[12];
 }b;
-// structure for member details
+// structure for member of the library details
 struct member{
     int id;
     char mName[50]; 
