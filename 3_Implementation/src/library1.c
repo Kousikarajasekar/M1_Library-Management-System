@@ -8,6 +8,10 @@
 # define MAX_SIZE 100 
 int present_size = 0;   
 
+/** 
+ * @brief functions to add, issue,delete books ina library system
+ */
+
 void addBook(){
     char myDate[12];
     time_t t = time(NULL);
