@@ -13,7 +13,7 @@
 
 /** 
  * @brief structure to store book details 
- * @brief structure to store member details 
+ * @brief structure to store member of library details
  * 
  */
  
