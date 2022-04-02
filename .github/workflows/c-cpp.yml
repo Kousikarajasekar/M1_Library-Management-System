@@ -1,18 +1,19 @@
-name: C/C++ CI
+name: Windows C CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     - name: build
-      run: project_main.c
-    
+      run: gcc project_main.c -o project_main.exe
+    - name: Run
+      run: .\project_main.exe
