@@ -2,6 +2,9 @@
 #include<stdlib.h> 
 #include<string.h> 
 #include<time.h> 
+
+#include "library1.h" 
+
 // structure for book details
 struct books{
     int id;

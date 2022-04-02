@@ -130,8 +130,16 @@ void issueBook(){
     fclose(fp);
 }
 
+void issueList(){
+    system("cls");
+    printf("<== Book Issue List ==>\n\n");
 
-void issueList(int id,int m.Name)
-{
-    return issueList;
+    printf("%-10s %-30s %-20s %-10s %-30s %s\n\n", "M.id", "Name",  "Book Name", "Date");
+
+    fp = fopen("issue.txt", "rb");
+    while(fread(&m, sizeof(m), 1, fp) == 1){
+        printf("%-10d %-30s %-20s %-10d %-30s %s\n", m.id, m.mName,  m.bookName, m.date);
+    }
+
+    fclose(fp);
 }
